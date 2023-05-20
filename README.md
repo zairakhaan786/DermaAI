@@ -16,20 +16,20 @@
 
 ## 🚀 Project Overview
 
-**DermaAI** is a comprehensive artificial intelligence healthcare application focused on the rapid classification, severity assessment, and recommendation of treatments for various skin conditions. This complete project was independently conceptualized, designed, coded, and developed from the ground up by **Zaira Khan**. 
+**DermaAI** is a comprehensive artificial intelligence healthcare application focused on the rapid classification, severity assessment, and recommendation of treatments for various skin conditions. This complete project was conceptualized, designed, coded, and successfully completed from the ground up by **Zaira Khan** on **20th May 2023**.
 
 ### Concept & Purpose
-The primary goal of DermaAI is to provide an accessible, highly accurate preliminary diagnostic system for skin health. By bridging the gap between advanced medical imaging and user-friendly web interfaces, the project serves as a practical healthcare solution that delivers instant analysis and actionable skincare advice to users. 
+The primary goal of DermaAI was to provide an accessible, highly accurate preliminary diagnostic system for skin health. By bridging the gap between advanced medical imaging and user-friendly web interfaces, the project serves as a practical healthcare solution that delivers instant analysis and actionable skincare advice.
 
 ### System Architecture & Functionality 
 The system features a robust, custom-built architecture that processes user uploads or real-time camera captures directly through a streamlined interface. The underlying logic seamlessly integrates deep learning models for classification, automatically assessing condition severity, and mapping the results to a tailored recommendation engine. The entire architecture—framing the frontend interactions, data pipeline, and backend routing—was intricately planned and implemented to ensure high performance and reliability.
 
 ### Innovation & Implementation
-Beyond simple classification, DermaAI innovates by combining predictive modeling with a dynamic severity assessment algorithm and instant post-diagnostic care instructions. The development process involved rigorous structured research, logical problem-solving, and methodical step-by-step technical execution. From constructing the custom neural network pipelines to crafting the seamless user interface, every component reflects a deep commitment to modern system design.
+Beyond simple classification, DermaAI innovates by combining predictive modeling with a dynamic severity assessment algorithm and instant post-diagnostic care instructions. The development process involved rigorous structured research, logical problem-solving, and methodical step-by-step technical execution. From constructing the custom neural network pipelines to crafting the seamless user interface, every component reflects a deep commitment to modern system design and programming excellence.
 
-The entire project lifecycle, including the foundational logic, architectural blueprint, frontend styling, backend coding, and model integration, was created and implemented solely by Zaira Khan using personal knowledge, applied research, and advanced programming skills. 
+The entire project lifecycle, including the foundational logic, architectural blueprint, frontend styling, backend coding, and model integration, was created and implemented solely by Zaira Khan on 20th May 2023 using personal knowledge, applied research, and advanced programming skills.
 
-*This project is independently developed and maintained by Zaira Khan.*
+*This project was independently developed and completed by Zaira Khan on 20th May 2023.*
 
 ---
 
