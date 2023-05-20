@@ -39,11 +39,11 @@ except ImportError:
     MODEL_LOADED = False
     print("⚠️ Warning: TensorFlow not installed. Running in demo/fallback mode.")
 # ──────────────────────────────────────────────────────────────────────────────
-app = Flask(__name__, template_folder="frontend/templates", static_folder="frontend/assets")
+app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "dermaai-secret-key-2023")
 
 # ── Upload Configuration ───────────────────────────────────────────────────────
-UPLOAD_FOLDER = "frontend/assets/uploads"
+UPLOAD_FOLDER = "static/uploads"
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "webp", "bmp"}
 MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # 16 MB limit
 
