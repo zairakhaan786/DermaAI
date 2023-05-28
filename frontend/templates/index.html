@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DermaAI – Skin Disease Prediction System</title>
+    <meta name="description"
+        content="DermaAI uses deep learning to detect and classify 9 types of skin diseases from uploaded images. Fast, accurate, and easy to use.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <!-- ── Header ── -->
+    <header class="fixed-top py-3">
+        <div class="container d-flex align-items-center justify-content-between">
+
+            <a href="{{ url_for('home') }}" class="logo">
+                DermaAI<span class="fas fa-dna px-1"></span>
+            </a>
+
+            <div id="menu-bar" class="fas fa-bars d-inline-block d-md-none"></div>
+
+            <nav class="nav">
+                <a href="{{ url_for('home') }}" class="active">Home</a>
+                <a href="{{ url_for('about') }}">About</a>
+                <a href="{{ url_for('disease') }}">Diseases</a>
+                <a href="{{ url_for('prediction') }}">Scan Now</a>
+                <a href="{{ url_for('contact') }}">Contact</a>
+            </nav>
+
+            <button id="theme-toggle" title="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+        </div>
+    </header>
+    <!-- ── End Header ── -->
+
+    <!-- ── Hero Section ── -->
+    <section class="home" id="home">
+        <div class="container">
+            <div class="row min-vh-100 align-items-center pt-5">
+                <div class="col-md-6 text-center">
+                    <img src="{{ url_for('static', filename='images/istockphoto-1248674930-612x612-removebg-preview.png') }}"
+                        class="w-100 float-anim" alt="Skin Health Illustration" style="max-width:480px;">
+                </div>
+                <div class="col-md-6 content text-center text-md-start ps-md-5">
+                    <span class="badge bg-light text-dark mb-3 p-2 border" style="font-size:0.85rem;"><i
+                            class="fas fa-university me-1 text-primary"></i> Academic Research Project - UPES,
+                        Dehradun</span>
+                    <span class="d-block mb-2 text-primary fw-bold"
+                        style="letter-spacing:1px;font-size:1.1rem;">AI-Powered Medical Screenings</span>
+                    <h3>Detect, Assess &amp; Get Skincare Advice — Instantly</h3>
+                    <p style="color:var(--text-muted);font-size:1.05rem;margin-bottom:2rem;">
+                        Upload a skin image and DermaAI will predict the condition, assess its
+                        <strong>severity level</strong>, and provide personalised <strong>skincare
+                            recommendations</strong>
+                        — all powered by deep learning.
+                    </p>
+                    <a href="{{ url_for('prediction') }}" class="link-btn">Try a Scan &nbsp;<i
+                            class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ── End Hero ── -->
+
+    <!-- ── Why DermaAI Feature Strip ── -->
+    <section style="padding:50px 0 20px;">
+        <div class="container">
+            <h2 class="heading">Why <span>DermaAI</span>?</h2>
+            <div class="feature-strip">
+                <div class="feature-strip-item tilt-card">
+                    <i class="fas fa-brain feature-strip-icon"></i>
+                    <h5>AI Disease Detection</h5>
+                    <p>Classifies 9 types of skin conditions with ResNet50 deep learning accuracy.</p>
+                </div>
+                <div class="feature-strip-item tilt-card">
+                    <i class="fas fa-chart-bar feature-strip-icon"></i>
+                    <h5>Severity Assessment</h5>
+                    <p>Each result includes a colour-coded severity level — Mild, Moderate, or Severe.</p>
+                </div>
+                <div class="feature-strip-item tilt-card">
+                    <i class="fas fa-spa feature-strip-icon"></i>
+                    <h5>Skincare Recommendations</h5>
+                    <p>Personalised treatment advice, prevention tips &amp; daily skincare routines.</p>
+                </div>
+                <div class="feature-strip-item tilt-card">
+                    <i class="fas fa-camera feature-strip-icon"></i>
+                    <h5>Live Camera Scan</h5>
+                    <p>Capture skin photos directly using your device's camera — no file needed.</p>
+                </div>
+                <div class="feature-strip-item tilt-card">
+                    <i class="fas fa-moon feature-strip-icon"></i>
+                    <h5>Dark &amp; Light Mode</h5>
+                    <p>Toggle between themes for a comfortable viewing experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ── End Feature Strip ── -->
+
+    <!-- ── About Section ── -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="row align-items-center flex-wrap-reverse">
+                <div class="col-md-6 content">
+                    <h3>What are Skin Diseases?</h3>
+                    <p>Skin diseases are conditions that affect your skin — causing rashes, inflammation,
+                        itchiness, or other changes. Some are genetic, while others arise from environmental
+                        or lifestyle factors. Early detection is critical for effective treatment.</p>
+                    <p>DermaAI leverages a deep learning model trained on thousands of dermatological images
+                        to classify conditions like Melanoma, Atopic Dermatitis, and more — all in seconds.</p>
+                    <a href="{{ url_for('about') }}" class="link-btn">Learn More</a>
+                </div>
+                <div class="col-md-6 text-center">
+                    <img src="{{ url_for('static', filename='images/conifer-1127-removebg-preview.png') }}"
+                        class="w-100 float-anim" alt="About DermaAI" style="max-width:420px;">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ── End About ── -->
+
+    <!-- ── Diseases Section ── -->
+    <section class="prevent" id="prevent">
+        <h1 class="heading"><span>Skin Conditions</span> We Detect</h1>
+        <div class="container">
+            <div class="d-flex flex-wrap justify-content-center">
+
+                <div class="box p-4 m-2 tilt-card">
+                    <img src="{{ url_for('static', filename='images/dry.png') }}" alt="Actinic Keratosis">
+                    <h3>Actinic Keratosis</h3>
+                    <p>Precancerous rough, scaly patches caused by prolonged sun exposure.</p>
+                </div>
+
+                <div class="box p-4 m-2 tilt-card">
+                    <img src="{{ url_for('static', filename='images/acne.png') }}" alt="Atopic Dermatitis">
+                    <h3>Atopic Dermatitis</h3>
+                    <p>Chronic, itchy condition causing redness, dryness, and inflammation.</p>
+                </div>
+
+                <div class="box p-4 m-2 tilt-card">
+                    <img src="{{ url_for('static', filename='images/Normal.png') }}" alt="Benign Keratosis">
+                    <h3>Benign Keratosis</h3>
+                    <p>Non-cancerous skin growth, often rough, brown, or wart-like.</p>
+                </div>
+
+                <div class="box p-4 m-2 tilt-card">
+                    <img src="{{ url_for('static', filename='images/oily.png') }}" alt="Dermatofibroma">
+                    <h3>Dermatofibroma</h3>
+                    <p>Firm, small, harmless skin nodule, usually on legs or arms.</p>
+                </div>
+
+                <div class="box p-4 m-2 tilt-card">
+                    <img src="{{ url_for('static', filename='images/Normal.png') }}" alt="Melanocytic Nevus">
+                    <h3>Melanocytic Nevus</h3>
+                    <p>Common moles; pigmented, benign growths from melanocytes.</p>
+                </div>
+
+                <div class="box p-4 m-2 tilt-card">
+                    <img src="{{ url_for('static', filename='images/Sensitive.png') }}" alt="Melanoma">
+                    <h3>Melanoma</h3>
+                    <p>Serious skin cancer from moles; may be dark, irregular, and fast-growing.</p>
+                </div>
+
+                <div class="box p-4 m-2 tilt-card">
+                    <img src="{{ url_for('static', filename='images/acne.png') }}" alt="Squamous Cell Carcinoma">
+                    <h3>Squamous Cell Carcinoma</h3>
+                    <p>Common skin cancer; scaly red patches or sores that may bleed.</p>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="{{ url_for('disease') }}" class="link-btn">View All Conditions</a>
+            </div>
+        </div>
+    </section>
+    <!-- ── End Diseases ── -->
+
+    <!-- ── Scan CTA Section ── -->
+    <section class="check" id="check">
+        <h1 class="heading"><span>Analyse</span> Your Skin</h1>
+        <div class="container text-center">
+            <p style="color:var(--text-muted);font-size:1.1rem;max-width:600px;margin:0 auto 2rem;">
+                Upload a close-up photo of the affected skin area or capture it with your camera.
+                Our AI model will instantly classify the condition for you.
+            </p>
+            <a href="{{ url_for('prediction') }}" class="link-btn" style="font-size:1.15rem;padding:14px 40px;">
+                <i class="fas fa-microscope me-2"></i> Start Scanning Now
+            </a>
+        </div>
+    </section>
+    <!-- ── End CTA ── -->
+
+
+
+    <!-- ── Contact Section ── -->
+    <section class="contact" id="contact">
+        <h1 class="heading"><span>Contact</span> Us</h1>
+        <div class="container">
+            <div class="row flex-wrap-reverse">
+                <div class="col-md-7 p-2">
+                    <form action="">
+                        <input type="text" placeholder="Your Name" class="box">
+                        <input type="email" placeholder="Your Email" class="box">
+                        <input type="tel" placeholder="Your Phone" class="box">
+                        <textarea placeholder="Your Message" cols="30" rows="8"></textarea>
+                        <input type="submit" class="link-btn" value="Send Message">
+                    </form>
+                </div>
+                <div class="col-md-5 p-2">
+                    <div class="p-4 box h-100" style="border-left:4px solid var(--primary-color);">
+                        <h4 style="font-weight:700;margin-bottom:1rem;">Get In Touch</h4>
+                        <p><i class="fas fa-envelope me-2" style="color:var(--primary-color);"></i>
+                            <a href="mailto:Zaira.khan0304@gmail.com">Zaira.khan0304@gmail.com</a>
+                        </p>
+                        <p><i class="fab fa-github me-2" style="color:var(--primary-color);"></i>
+                            <a href="https://github.com/zairakhaan786" target="_blank">github.com/zairakhaan786</a>
+                        </p>
+                        <p><i class="fas fa-map-marker-alt me-2" style="color:var(--primary-color);"></i>
+                            UPES, Dehradun, Uttarakhand, India
+                        </p>
+                        <hr style="border-color:var(--primary-color);opacity:.3;">
+                        <p style="color:var(--text-muted);font-size:0.9rem;margin:0;">
+                            DermaAI is developed as an <strong>individual AI research project</strong>
+                            at UPES, Dehradun. Feel free to reach out for collaboration or academic enquiries.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ── End Contact ── -->
+
+    <!-- ── Footer ── -->
+    <section class="footer">
+        <div class="container">
+            <div class="d-flex flex-wrap justify-content-center text-center text-sm-start">
+
+                <div class="box p-3 m-2" style="max-width:300px;">
+                    <h3>DermaAI</h3>
+                    <p>AI Skin Disease Detection System. This project was developed as an academic AI research project
+                        at the University of Petroleum and Energy Studies (UPES).</p>
+                </div>
+
+                <div class="box p-3 m-2">
+                    <h3>Quick Links</h3>
+                    <a href="{{ url_for('home') }}">Home</a>
+                    <a href="{{ url_for('prediction') }}">Upload Scan</a>
+                    <a href="{{ url_for('prediction') }}">Camera Scan</a>
+                    <a href="{{ url_for('about') }}">About Project</a>
+                </div>
+
+                <div class="box p-3 m-2">
+                    <h3>Location</h3>
+                    <p class="text-muted"><i class="fas fa-map-marker-alt me-2 text-primary"></i> UPES,
+                        Dehradun<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Uttarakhand, India</p>
+                </div>
+
+            </div>
+            <div class="credit">Developed at <span>UPES, Dehradun, India</span> | DermaAI &copy; 2026</div>
+        </div>
+    </section>
+    <!-- ── End Footer ── -->
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>

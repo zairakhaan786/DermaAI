@@ -1,0 +1,6 @@
+Flask>=2.3.0
+Werkzeug>=2.3.0
+Pillow>=10.0.0
+python-dotenv>=1.0.0
+# Uncomment the line below when deploying the ML model:
+# tensorflow>=2.13.0
