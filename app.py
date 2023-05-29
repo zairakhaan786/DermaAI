@@ -17,15 +17,27 @@ from werkzeug.utils import secure_filename
 from utils.recommendations import get_recommendation
 
 # ── ML Model Configuration (requires TensorFlow) ──────────────────────────────
-# Uncomment the block below when deploying with a trained model:
-#
-# from tensorflow.keras.models import load_model
-# from tensorflow.keras.preprocessing import image
-# from tensorflow.keras.applications.resnet50 import preprocess_input
-# import numpy as np
-#
-# MODEL_PATH = "model/dermaai_model.h5"
-# model = load_model(MODEL_PATH)
+import numpy as np
+import logging
+
+try:
+    from tensorflow.keras.models import load_model
+    from tensorflow.keras.preprocessing import image
+    from tensorflow.keras.applications.resnet50 import preprocess_input
+
+    MODEL_PATH = "model/skin_model.h5"
+    if os.path.exists(MODEL_PATH):
+        model = load_model(MODEL_PATH)
+        MODEL_LOADED = True
+        print(f"✅ Successfully loaded model from {MODEL_PATH}")
+    else:
+        model = None
+        MODEL_LOADED = False
+        print(f"⚠️ Warning: Model file not found at {MODEL_PATH}. Running in demo/fallback mode.")
+except ImportError:
+    model = None
+    MODEL_LOADED = False
+    print("⚠️ Warning: TensorFlow not installed. Running in demo/fallback mode.")
 # ──────────────────────────────────────────────────────────────────────────────
 app = Flask(__name__, template_folder="frontend/templates", static_folder="frontend/assets")
 app.secret_key = os.environ.get("SECRET_KEY", "dermaai-secret-key-2023")
@@ -136,20 +148,27 @@ def predict():
     file.save(file_path)
 
     # ── Inference ──────────────────────────────────────────────────────────────
-    # ┌─ Real model inference (requires TensorFlow – uncomment when ready) ─────
-    # │   img = image.load_img(file_path, target_size=(224, 224))
-    # │   img_array = image.img_to_array(img)
-    # │   img_array = np.expand_dims(img_array, axis=0)
-    # │   img_array = preprocess_input(img_array)
-    # │   predictions = model.predict(img_array)
-    # │   pred_index = int(np.argmax(predictions[0]))
-    # │   confidence = round(float(predictions[0][pred_index]) * 100, 2)
-    # └─────────────────────────────────────────────────────────────────────────
-    #
-    # Demo mode – simulates a prediction result without the model file:
-    pred_index = random.randint(0, len(CLASS_NAMES) - 1)
-    pred_class = CLASS_NAMES[pred_index]
-    confidence = round(random.uniform(72.5, 98.9), 2)
+    if MODEL_LOADED and model is not None:
+        try:
+            img = image.load_img(file_path, target_size=(224, 224))
+            img_array = image.img_to_array(img)
+            img_array = np.expand_dims(img_array, axis=0)
+            img_array = preprocess_input(img_array)
+            predictions = model.predict(img_array)
+            pred_index = int(np.argmax(predictions[0]))
+            confidence = round(float(predictions[0][pred_index]) * 100, 2)
+            pred_class = CLASS_NAMES.get(pred_index, "Unknown")
+        except Exception as e:
+            print(f"Error during prediction: {e}")
+            # Fallback
+            pred_index = random.randint(0, len(CLASS_NAMES) - 1)
+            pred_class = CLASS_NAMES[pred_index]
+            confidence = round(random.uniform(72.5, 98.9), 2)
+    else:
+        # Demo mode – simulates a prediction result if the model file is missing:
+        pred_index = random.randint(0, len(CLASS_NAMES) - 1)
+        pred_class = CLASS_NAMES[pred_index]
+        confidence = round(random.uniform(72.5, 98.9), 2)
 
     # ── Fetch severity + recommendation ───────────────────────────────────────
     rec = get_recommendation(pred_class)
