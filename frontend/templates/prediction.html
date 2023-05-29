@@ -11,7 +11,7 @@
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
     <!-- Bootstrap -->
@@ -166,13 +166,23 @@
                             {{ severity }}
                         </span>
 
-                        <!-- Confidence -->
-                        <p class="result-label mt-3">Confidence Score</p>
-                        <div class="d-flex align-items-center gap-3">
-                            <div class="confidence-bar-wrap flex-grow-1">
-                                <div class="confidence-bar" id="conf-bar" style="width:0%;"></div>
+                        <!-- Confidence Dashbord Ring -->
+                        <div class="mt-4 pt-3 border-top" style="border-color:var(--border-color) !important;">
+                            <div class="d-flex align-items-center gap-4">
+                                <div class="dashboard-ring" id="conf-ring" style="--progress: 0%;">
+                                    <div class="dashboard-ring-text">
+                                        {{ confidence }}%
+                                        <span>Certainty</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="result-label mb-1">AI Diagnostic Score</p>
+                                    <p class="text-muted m-0" style="font-size:0.9rem; line-height:1.5;">
+                                        The AI model has determined this classification with <strong>{{ confidence }}%
+                                            certainty</strong> based strictly on comparative visual datasets.
+                                    </p>
+                                </div>
                             </div>
-                            <span class="confidence-pct">{{ confidence }}%</span>
                         </div>
 
                         <!-- Disclaimer -->
@@ -248,12 +258,12 @@
         </div>
     </section>
 
-    <!-- Animate confidence bar on load -->
+    <!-- Animate confidence ring on load -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             setTimeout(() => {
-                const bar = document.getElementById('conf-bar');
-                if (bar) bar.style.width = '{{ confidence }}%';
+                const ring = document.getElementById('conf-ring');
+                if (ring) ring.style.setProperty('--progress', '{{ confidence }}%');
             }, 300);
             savePrediction("{{ prediction }}", "{{ severity }}");
             // Smooth scroll to result

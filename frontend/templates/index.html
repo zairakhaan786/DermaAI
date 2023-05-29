@@ -11,7 +11,7 @@
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
     <!-- Bootstrap -->
@@ -50,27 +50,32 @@
 
     <!-- ── Hero Section ── -->
     <section class="home" id="home">
-        <div class="container">
-            <div class="row min-vh-100 align-items-center pt-5">
-                <div class="col-md-6 text-center">
-                    <img src="{{ url_for('static', filename='images/istockphoto-1248674930-612x612-removebg-preview.png') }}"
-                        class="w-100 float-anim" alt="Skin Health Illustration" style="max-width:480px;">
-                </div>
-                <div class="col-md-6 content text-center text-md-start ps-md-5">
-                    <span class="badge bg-light text-dark mb-3 p-2 border" style="font-size:0.85rem;"><i
-                            class="fas fa-university me-1 text-primary"></i> Academic Research Project - UPES,
-                        Dehradun</span>
-                    <span class="d-block mb-2 text-primary fw-bold"
-                        style="letter-spacing:1px;font-size:1.1rem;">AI-Powered Medical Screenings</span>
-                    <h3>Detect, Assess &amp; Get Skincare Advice — Instantly</h3>
-                    <p style="color:var(--text-muted);font-size:1.05rem;margin-bottom:2rem;">
+        <div class="container text-center pt-5 mt-5">
+            <div class="row min-vh-100 align-items-center justify-content-center">
+                <div class="col-lg-8 content">
+                    <span class="badge bg-white text-dark mb-4 p-2 px-3 border shadow-sm rounded-pill"
+                        style="font-size:0.9rem;">
+                        <i class="fas fa-university me-2 text-primary"></i> Academic Research Project - UPES, Dehradun
+                    </span>
+                    <h1 class="display-3 fw-bolder mb-3"
+                        style="color:var(--text-color); letter-spacing:-1.5px; line-height:1.2;">
+                        Advanced <span style="color:var(--primary-color);">AI Skin</span> Diagnostics
+                    </h1>
+                    <p class="mx-auto text-muted mb-5" style="max-width:650px; font-size:1.15rem; line-height:1.7;">
                         Upload a skin image and DermaAI will predict the condition, assess its
-                        <strong>severity level</strong>, and provide personalised <strong>skincare
-                            recommendations</strong>
-                        — all powered by deep learning.
+                        <strong>severity level</strong>, and provide personalized <strong>skincare
+                            recommendations</strong> — all in seconds powered by deep learning.
                     </p>
-                    <a href="{{ url_for('prediction') }}" class="link-btn">Try a Scan &nbsp;<i
-                            class="fas fa-arrow-right"></i></a>
+                    <div class="d-flex justify-content-center gap-3 flex-wrap">
+                        <a href="{{ url_for('prediction') }}" class="link-btn"
+                            style="padding:15px 35px; font-size:1.1rem; box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4);">
+                            Try a Scan &nbsp;<i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#about" class="link-btn text-dark"
+                            style="background:#fff; border:1px solid var(--border-color); padding:15px 35px; font-size:1.1rem; box-shadow: 0 8px 25px rgba(0,0,0,0.05);">
+                            Learn More
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
