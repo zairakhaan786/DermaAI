@@ -1,10 +1,8 @@
 flask
-tensorflow
-keras
 numpy
-opencv-python
 pillow
-scikit-learn
 python-dotenv
 werkzeug
 gunicorn
+# tensorflow and keras are removed for cloud hosting due to size limits.
+# The app will run in demo mode on Vercel.
