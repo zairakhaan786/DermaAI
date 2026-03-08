@@ -1,3 +1,11 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# Model
+model.h5
 my models
 app.py.txt
-model.h5

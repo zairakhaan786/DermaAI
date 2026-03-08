@@ -5,290 +5,476 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DermaAI – Skin Disease Prediction System</title>
-    <meta name="description"
-        content="DermaAI uses deep learning to detect and classify 9 types of skin diseases from uploaded images. Fast, accurate, and easy to use.">
-
+    <title>DermaAI – Advanced AI Skin Diagnostics</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/v2-style.css') }}">
 </head>
 
 <body>
-    <!-- ── Header ── -->
-    <header class="fixed-top py-3">
-        <div class="container d-flex align-items-center justify-content-between">
 
-            <a href="{{ url_for('home') }}" class="logo">
-                DermaAI<span class="fas fa-dna px-1"></span>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top py-3 custom-navbar">
+        <div class="container align-items-center">
+            <a class="navbar-brand d-flex align-items-center fw-bold text-dark" href="#">
+                <span class="logo-icon bg-primary text-white me-2 d-flex align-items-center justify-content-center"><i
+                        class="fas fa-cube"></i></span>
+                DermaAI
             </a>
-
-            <div id="menu-bar" class="fas fa-bars d-inline-block d-md-none"></div>
-
-            <nav class="nav">
-                <a href="{{ url_for('home') }}" class="active">Home</a>
-                <a href="{{ url_for('about') }}">About</a>
-                <a href="{{ url_for('disease') }}">Diseases</a>
-                <a href="{{ url_for('prediction') }}">Scan Now</a>
-                <a href="{{ url_for('contact') }}">Contact</a>
-            </nav>
-
-            <button id="theme-toggle" title="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-toggle="collapse"
+                data-bs-target="#navMenu">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-medium text-muted">
+                    <li class="nav-item px-3"><a class="nav-link text-dark" href="#features">Features</a></li>
+                    <li class="nav-item px-3"><a class="nav-link text-muted" href="#how-it-works">How It Works</a></li>
+                    <li class="nav-item px-3"><a class="nav-link text-muted" href="#conditions">Conditions</a></li>
+                    <li class="nav-item px-3"><a class="nav-link text-muted" href="#research">Research</a></li>
+                </ul>
+                <div class="d-flex">
+                    <a href="{{ url_for('prediction') }}"
+                        class="btn btn-primary rounded-pill px-4 py-2 fw-semibold shadow-sm">Get Started</a>
+                </div>
+            </div>
         </div>
-    </header>
-    <!-- ── End Header ── -->
+    </nav>
 
-    <!-- ── Hero Section ── -->
-    <section class="home" id="home">
-        <div class="container text-center pt-5 mt-5">
-            <div class="row min-vh-100 align-items-center justify-content-center">
-                <div class="col-lg-8 content">
-                    <span class="badge bg-white text-dark mb-4 p-2 px-3 border shadow-sm rounded-pill"
-                        style="font-size:0.9rem;">
-                        <i class="fas fa-university me-2 text-primary"></i> Academic Research Project - UPES, Dehradun
-                    </span>
-                    <h1 class="display-3 fw-bolder mb-3"
-                        style="color:var(--text-color); letter-spacing:-1.5px; line-height:1.2;">
-                        Advanced <span style="color:var(--primary-color);">AI Skin</span> Diagnostics
+    <!-- Hero Section -->
+    <section class="hero-section position-relative overflow-hidden">
+        <div class="hero-bg-gradient"></div>
+        <div class="container position-relative z-1" style="padding-top: 140px; padding-bottom: 80px;">
+            <div class="row align-items-center g-5">
+                <!-- Left Content -->
+                <div class="col-lg-6 hero-content">
+                    <div class="badge-pill mb-4 d-inline-flex align-items-center px-3 py-1 rounded-pill text-primary fw-semibold bg-white border border-light shadow-sm"
+                        style="font-size: 0.75rem; letter-spacing: 0.5px;">
+                        <span class="me-2 text-primary" style="font-size: 6px;"><i class="fas fa-circle"></i></span> AI
+                        POWERED DIAGNOSTICS
+                    </div>
+                    <h1 class="display-3 fw-bolder mb-4 text-dark" style="letter-spacing: -1px; line-height: 1.1;">
+                        Advanced AI for <br>
+                        <span class="text-gradient-primary">Skin Health</span> <br>
+                        Detection
                     </h1>
-                    <p class="mx-auto text-muted mb-5" style="max-width:650px; font-size:1.15rem; line-height:1.7;">
-                        Upload a skin image and DermaAI will predict the condition, assess its
-                        <strong>severity level</strong>, and provide personalized <strong>skincare
-                            recommendations</strong> — all in seconds powered by deep learning.
+                    <p class="text-muted mb-5 fs-5" style="max-width: 90%; line-height: 1.6;">
+                        Leverage deep learning to detect conditions, assess severity, and get personalized advice in
+                        seconds. Trusted by researchers at UPES.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3 mb-5 align-items-center">
+                        <a href="{{ url_for('prediction') }}"
+                            class="btn btn-primary rounded-pill py-3 px-5 fw-bold shadow-lg d-flex align-items-center">
+                            Start Analysis <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                        <a href="{{ url_for('prediction') }}"
+                            class="btn btn-light rounded-pill py-3 px-5 fw-semibold shadow-sm text-dark bg-white border-0">
+                            Scan with Camera
+                        </a>
+                    </div>
+                    <div class="trusted-by d-flex align-items-center pt-2">
+                        <div class="avatar-group d-flex me-3">
+                            <div class="avatar rounded-circle bg-light border border-white"
+                                style="width:36px; height:36px; z-index:3; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+                                <img src="https://i.pravatar.cc/100?img=1" width="100%"></div>
+                            <div class="avatar rounded-circle bg-light border border-white"
+                                style="width:36px; height:36px; margin-left:-12px; z-index:2; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+                                <img src="https://i.pravatar.cc/100?img=2" width="100%"></div>
+                            <div class="avatar rounded-circle bg-light border border-white"
+                                style="width:36px; height:36px; margin-left:-12px; z-index:1; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+                                <img src="https://i.pravatar.cc/100?img=3" width="100%"></div>
+                        </div>
+                        <span class="text-muted small fw-medium">Trusted by 50+ users worldwide</span>
+                    </div>
+                </div>
+
+                <!-- Right Content (Mockup Graphic) -->
+                <div class="col-lg-6 position-relative">
+                    <div class="hero-graphic position-relative ms-lg-5">
+                        <div class="main-card bg-dark rounded-4 shadow-xl position-relative overflow-hidden"
+                            style="aspect-ratio: 1/1; border: 8px solid white;">
+                            <!-- Glowing Orb Effect -->
+                            <div class="orb-container w-100 h-100 d-flex align-items-center justify-content-center">
+                                <div
+                                    class="glowing-orb rounded-circle d-flex align-items-center justify-content-center">
+                                    <span class="text-white display-4 fw-light" style="letter-spacing:2px;">AI</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Pill -->
+                        <div class="floating-pill bg-white rounded-3 shadow-lg p-3 d-flex align-items-center position-absolute"
+                            style="bottom: 20px; left: -30px; border: 1px solid #f0f0f0;">
+                            <div class="icon-circle bg-success bg-opacity-10 text-success rounded-circle d-flex justify-content-center align-items-center me-3"
+                                style="width:32px; height:32px;"><i class="fas fa-check"></i></div>
+                            <div>
+                                <h6 class="mb-1 text-dark fw-bold" style="font-size: 0.85rem;">Analysis Complete</h6>
+                                <div class="skeleton-line bg-light rounded w-75" style="height: 4px; mb-1"></div>
+                                <div class="skeleton-line bg-light rounded w-50 mt-1" style="height: 4px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Capabilities -->
+    <section id="features" class="py-5 bg-white">
+        <div class="container py-5 text-center">
+            <h2 class="display-6 fw-bold text-dark mb-3">Core Capabilities</h2>
+            <p class="text-muted mx-auto mb-5" style="max-width: 600px; font-size: 1.1rem;">
+                Our precision-engineered AI provides comprehensive skin analysis using the latest clinical datasets and
+                deep learning models.
+            </p>
+
+            <div class="row g-4 mt-2">
+                <!-- Card 1 -->
+                <div class="col-md-4">
+                    <div class="feature-card border-0 bg-light rounded-4 p-5 h-100 text-start shadow-sm transition-up">
+                        <div class="icon-box mb-4 d-inline-flex rounded-3 bg-primary bg-opacity-10 text-primary p-3"
+                            style="font-size: 1.25rem;">
+                            <i class="fas fa-microscope text-primary"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3 text-dark fs-5">AI Analysis</h4>
+                        <p class="text-muted mb-0 small lh-lg">
+                            High precision deep learning models for instant identification of complex skin conditions
+                            with clinical-grade accuracy.
+                        </p>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="col-md-4">
+                    <div class="feature-card border-0 bg-light rounded-4 p-5 h-100 text-start shadow-sm transition-up">
+                        <div class="icon-box mb-4 d-inline-flex rounded-3 bg-info bg-opacity-10 text-info p-3"
+                            style="font-size: 1.25rem;">
+                            <i class="fas fa-map-marked-alt text-info"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3 text-dark fs-5">Severity Mapping</h4>
+                        <p class="text-muted mb-0 small lh-lg">
+                            Advanced visual heatmaps showing affected areas and real-time progression risk levels based
+                            on historical data patterns.
+                        </p>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="col-md-4">
+                    <div class="feature-card border-0 bg-light rounded-4 p-5 h-100 text-start shadow-sm transition-up">
+                        <div class="icon-box mb-4 d-inline-flex rounded-3 text-success p-3"
+                            style="background:#d1fae5; font-size: 1.25rem;">
+                            <i class="fas fa-shield-alt" style="color:#059669;"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3 text-dark fs-5">Treatment Advice</h4>
+                        <p class="text-muted mb-0 small lh-lg">
+                            Data-driven clinical guidance and personalized next steps based on global medical standards
+                            and verified research.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-5 bg-gradient-brand text-white text-center my-5">
+        <div class="container py-5">
+            <h2 class="display-6 fw-bold mb-3 text-white">How It Works</h2>
+            <p class="text-white text-opacity-75 mx-auto mb-5" style="max-width: 600px;">
+                Get clinical-grade insights in three simple steps using our advanced neural engine.
+            </p>
+
+            <div class="row g-4 mt-4 position-relative z-1">
+                <!-- Connector Line -->
+                <div class="col-12 position-absolute top-50 start-0 w-100 d-none d-lg-block z-n1">
+                    <div class="border-top border-2 border-white border-opacity-25"
+                        style="transform: translateY(-40px);"></div>
+                </div>
+
+                <div class="col-lg-4 px-4 text-center step-box">
+                    <div class="step-num bg-white text-primary rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4 shadow"
+                        style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: 800;">1</div>
+                    <h5 class="fw-bold text-white mb-2">Upload Photo</h5>
+                    <p class="text-white text-opacity-75 small px-3">Take a clear picture of the affected skin area in
+                        good lighting.</p>
+                </div>
+                <div class="col-lg-4 px-4 text-center step-box">
+                    <div class="step-num bg-white text-primary rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4 shadow"
+                        style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: 800;">2</div>
+                    <h5 class="fw-bold text-white mb-2">AI Analysis</h5>
+                    <p class="text-white text-opacity-75 small px-3">Our neural networks process the image against
+                        millions of clinical data points.</p>
+                </div>
+                <div class="col-lg-4 px-4 text-center step-box">
+                    <div class="step-num bg-white text-primary rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4 shadow"
+                        style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: 800;">3</div>
+                    <h5 class="fw-bold text-white mb-2">Get Report</h5>
+                    <p class="text-white text-opacity-75 small px-3">Receive a detailed diagnostic report with severity
+                        scores and advice.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conditions We Detect -->
+    <section id="conditions" class="py-5 bg-white">
+        <div class="container py-4">
+            <div class="d-flex justify-content-between align-items-end mb-5">
+                <div>
+                    <h2 class="display-6 fw-bold text-dark mb-2">Conditions We Detect</h2>
+                    <p class="text-muted mb-0">Trained to identify 10+ common and rare skin pathologies.</p>
+                </div>
+                <a href="#"
+                    class="text-primary fw-semibold text-decoration-none bg-primary bg-opacity-10 px-3 py-2 rounded-pill small">View
+                    All <i class="fas fa-arrow-right ms-1"></i></a>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-3 col-sm-6">
+                    <div
+                        class="condition-card bg-light rounded-4 overflow-hidden shadow-sm h-100 transition-up border-0">
+                        <img src="{{ url_for('static', filename='images/dry.png') }}" class="w-100"
+                            style="height: 200px; object-fit: cover;" alt="Actinic Keratosis">
+                        <div class="p-3 bg-white">
+                            <h6 class="fw-bold text-dark mb-1">Actinic Keratosis</h6>
+                            <p class="small text-muted mb-0" style="font-size: 0.8rem;">Precancerous scaly patches</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div
+                        class="condition-card bg-light rounded-4 overflow-hidden shadow-sm h-100 transition-up border-0">
+                        <img src="{{ url_for('static', filename='images/Sensitive.png') }}" class="w-100"
+                            style="height: 200px; object-fit: cover; background:#111; padding:20px;" alt="Melanoma">
+                        <div class="p-3 bg-white">
+                            <h6 class="fw-bold text-dark mb-1">Melanoma</h6>
+                            <p class="small text-muted mb-0" style="font-size: 0.8rem;">High-risk pigmented lesions</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div
+                        class="condition-card bg-light rounded-4 overflow-hidden shadow-sm h-100 transition-up border-0">
+                        <img src="{{ url_for('static', filename='images/images (2).png') }}" class="w-100"
+                            style="height: 200px; object-fit: cover; background:#111; padding:20px;"
+                            alt="Basal Cell Carcinoma">
+                        <div class="p-3 bg-white">
+                            <h6 class="fw-bold text-dark mb-1">Basal Cell Carcinoma</h6>
+                            <p class="small text-muted mb-0" style="font-size: 0.8rem;">Common skin cancer type</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div
+                        class="condition-card bg-light rounded-4 overflow-hidden shadow-sm h-100 transition-up border-0">
+                        <img src="{{ url_for('static', filename='images/acne.png') }}" class="w-100"
+                            style="height: 200px; object-fit: cover;" alt="Eczema">
+                        <div class="p-3 bg-white">
+                            <h6 class="fw-bold text-dark mb-1">Eczema</h6>
+                            <p class="small text-muted mb-0" style="font-size: 0.8rem;">Chronic inflammatory condition
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-5 mt-4" style="background: #fafafa;">
+        <div class="container py-5 text-center">
+            <h2 class="display-6 fw-bold text-dark mb-3">What Users Say</h2>
+            <p class="text-muted mx-auto mb-5">Empowering thousands of individuals to take control of their skin health.
+            </p>
+
+            <div class="row g-4 text-start">
+                <!-- Rev 1 -->
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm p-4 rounded-4 h-100 transition-up">
+                        <div class="text-warning mb-3">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-muted fw-medium fst-italic mb-4 lh-lg" style="font-size: 0.95rem;">
+                            "DermaAI makes AI-powered skin analysis simple and accessible. The interface is clean, fast,
+                            and very easy to use."
+                        </p>
+                        <div class="d-flex align-items-center mt-auto">
+                            <div class="bg-light rounded-circle me-3" style="width: 45px; height: 45px;"><img
+                                    src="https://i.pravatar.cc/100?img=11" class="rounded-circle w-100"></div>
+                            <div>
+                                <h6 class="mb-0 fw-bold text-dark" style="font-size: 0.9rem;">Alex Rive</h6>
+                                <span class="text-muted small" style="font-size: 0.75rem;">Software Engineer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Rev 2 -->
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm p-4 rounded-4 h-100 transition-up">
+                        <div class="text-warning mb-3">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="text-muted fw-medium fst-italic mb-4 lh-lg" style="font-size: 0.95rem;">
+                            "As a professional, I find the severity mapping tool incredibly detailed. It provides
+                            insights that are usually only available in clinical settings."
+                        </p>
+                        <div class="d-flex align-items-center mt-auto">
+                            <div class="bg-light rounded-circle me-3" style="width: 45px; height: 45px;"><img
+                                    src="https://i.pravatar.cc/100?img=5" class="rounded-circle w-100"></div>
+                            <div>
+                                <h6 class="mb-0 fw-bold text-dark" style="font-size: 0.9rem;">Sarah Jenkins</h6>
+                                <span class="text-muted small" style="font-size: 0.75rem;">Dermatology Consultant</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Rev 3 -->
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm p-4 rounded-4 h-100 transition-up">
+                        <div class="text-warning mb-3">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-muted fw-medium fst-italic mb-4 lh-lg" style="font-size: 0.95rem;">
+                            "Super fast and highly intuitive. I used it to check a recurring rash and the advice
+                            provided matched exactly what my GP eventually told me."
+                        </p>
+                        <div class="d-flex align-items-center mt-auto">
+                            <div class="bg-light rounded-circle me-3" style="width: 45px; height: 45px;"><img
+                                    src="https://i.pravatar.cc/100?img=8" class="rounded-circle w-100"></div>
+                            <div>
+                                <h6 class="mb-0 fw-bold text-dark" style="font-size: 0.9rem;">Mateo Brice</h6>
+                                <span class="text-muted small" style="font-size: 0.75rem;">Verified User</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 mb-5">
+        <div class="container">
+            <div class="bg-gradient-brand rounded-5 text-center px-4 py-5 shadow-lg relative overflow-hidden text-white"
+                style="padding-top: 5rem !important; padding-bottom: 5rem !important;">
+                <div class="position-relative z-1 max-w-lg mx-auto">
+                    <h2 class="display-5 fw-bold mb-4">Start Your Skin Health Scan Today</h2>
+                    <p class="text-white text-opacity-75 mb-5 mx-auto" style="max-width: 500px;">
+                        Join thousands of proactive users monitoring their skin health with AI.
                     </p>
                     <div class="d-flex justify-content-center gap-3 flex-wrap">
-                        <a href="{{ url_for('prediction') }}" class="link-btn"
-                            style="padding:15px 35px; font-size:1.1rem; box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4);">
-                            Try a Scan &nbsp;<i class="fas fa-arrow-right"></i>
-                        </a>
-                        <a href="#about" class="link-btn text-dark"
-                            style="background:#fff; border:1px solid var(--border-color); padding:15px 35px; font-size:1.1rem; box-shadow: 0 8px 25px rgba(0,0,0,0.05);">
-                            Learn More
-                        </a>
+                        <a href="{{ url_for('prediction') }}"
+                            class="btn btn-light rounded-pill px-5 py-3 fw-bold text-primary shadow-sm">Start Free
+                            Scan</a>
+                        <a href="#book" class="btn btn-outline-light rounded-pill px-5 py-3 fw-semibold">Book
+                            Dermatologist</a>
+                    </div>
+                </div>
+                <!-- bg abstract circles -->
+                <div class="position-absolute rounded-circle bg-white opacity-10"
+                    style="width: 300px; height: 300px; top: -100px; left: -100px;"></div>
+                <div class="position-absolute rounded-circle bg-white opacity-10"
+                    style="width: 250px; height: 250px; bottom: -50px; right: -50px;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-5 pb-4 mt-5">
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <!-- Col 1 -->
+                <div class="col-lg-4 col-md-6 pe-lg-5">
+                    <a class="navbar-brand d-flex align-items-center fw-bold text-white mb-4 fs-4" href="#">
+                        <span
+                            class="logo-icon bg-primary text-white me-2 d-flex align-items-center justify-content-center"
+                            style="width: 30px; height: 30px; border-radius: 6px; font-size: 14px;"><i
+                                class="fas fa-cube"></i></span>
+                        DermaAI
+                    </a>
+                    <p class="text-secondary small lh-lg pe-4">
+                        Pioneering AI-driven dermatology solutions for early detection and preventative healthcare.
+                        Developed by researchers at UPES.
+                    </p>
+                    <div class="d-flex gap-3 mt-4">
+                        <a href="#"
+                            class="text-white text-opacity-50 hover-white bg-white bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center"
+                            style="width: 36px; height: 36px;"><i class="fab fa-twitter"></i></a>
+                        <a href="#"
+                            class="text-white text-opacity-50 hover-white bg-white bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center"
+                            style="width: 36px; height: 36px;"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2 -->
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-4">Quick Links</h6>
+                    <ul class="list-unstyled text-secondary small lh-lg d-flex flex-column gap-2 mb-0">
+                        <li><a href="#" class="text-secondary text-decoration-none hover-white">Home</a></li>
+                        <li><a href="#" class="text-secondary text-decoration-none hover-white">Features</a></li>
+                        <li><a href="#" class="text-secondary text-decoration-none hover-white">Research Paper</a></li>
+                        <li><a href="#" class="text-secondary text-decoration-none hover-white">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 -->
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-4">Legal</h6>
+                    <ul class="list-unstyled text-secondary small lh-lg d-flex flex-column gap-2 mb-0">
+                        <li><a href="#" class="text-secondary text-decoration-none hover-white">Privacy Policy</a></li>
+                        <li><a href="#" class="text-secondary text-decoration-none hover-white">Terms of Service</a>
+                        </li>
+                        <li><a href="#" class="text-secondary text-decoration-none hover-white">Medical Disclaimer</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Col 4 -->
+                <div class="col-lg-4 col-md-6">
+                    <h6 class="fw-bold mb-4">Location</h6>
+                    <p class="text-secondary small mb-3">UPES University <br> Energy Acres, P.O. Bidholi via Prem
+                        Nagar,<br> Dehradun, Uttarakhand 248007</p>
+                    <div class="rounded-3 overflow-hidden border border-secondary border-opacity-25"
+                        style="height: 120px; background:#e0e0e0;">
+                        <img src="https://maps.googleapis.com/maps/api/staticmap?center=UPES+Dehradun&zoom=14&size=400x150&maptype=roadmap&markers=color:red%7CUPES+Dehradun&key=dummy"
+                            onerror="this.src='{{ url_for('static', filename='images/map-placeholder.png') }}'; this.style='object-fit:cover; width:100%; height:100%;'"
+                            alt="Map" style="object-fit:cover; width:100%; height: 100%;">
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- ── End Hero ── -->
 
-    <!-- ── Why DermaAI Feature Strip ── -->
-    <section style="padding:50px 0 20px;">
-        <div class="container">
-            <h2 class="heading">Why <span>DermaAI</span>?</h2>
-            <div class="feature-strip">
-                <div class="feature-strip-item tilt-card">
-                    <i class="fas fa-brain feature-strip-icon"></i>
-                    <h5>AI Disease Detection</h5>
-                    <p>Classifies 9 types of skin conditions with ResNet50 deep learning accuracy.</p>
-                </div>
-                <div class="feature-strip-item tilt-card">
-                    <i class="fas fa-chart-bar feature-strip-icon"></i>
-                    <h5>Severity Assessment</h5>
-                    <p>Each result includes a colour-coded severity level — Mild, Moderate, or Severe.</p>
-                </div>
-                <div class="feature-strip-item tilt-card">
-                    <i class="fas fa-spa feature-strip-icon"></i>
-                    <h5>Skincare Recommendations</h5>
-                    <p>Personalised treatment advice, prevention tips &amp; daily skincare routines.</p>
-                </div>
-                <div class="feature-strip-item tilt-card">
-                    <i class="fas fa-camera feature-strip-icon"></i>
-                    <h5>Live Camera Scan</h5>
-                    <p>Capture skin photos directly using your device's camera — no file needed.</p>
-                </div>
-                <div class="feature-strip-item tilt-card">
-                    <i class="fas fa-moon feature-strip-icon"></i>
-                    <h5>Dark &amp; Light Mode</h5>
-                    <p>Toggle between themes for a comfortable viewing experience.</p>
-                </div>
+            <div
+                class="border-top border-secondary border-opacity-25 pt-4 d-flex justify-content-between align-items-center flex-wrap">
+                <p class="text-secondary small mb-0">&copy; 2024 DermaAI. All rights reserved.</p>
+                <p class="text-secondary small mb-0">Developed at <span class="text-white fw-medium">UPES,
+                        Dehradun</span></p>
             </div>
         </div>
-    </section>
-    <!-- ── End Feature Strip ── -->
-
-    <!-- ── About Section ── -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="row align-items-center flex-wrap-reverse">
-                <div class="col-md-6 content">
-                    <h3>What are Skin Diseases?</h3>
-                    <p>Skin diseases are conditions that affect your skin — causing rashes, inflammation,
-                        itchiness, or other changes. Some are genetic, while others arise from environmental
-                        or lifestyle factors. Early detection is critical for effective treatment.</p>
-                    <p>DermaAI leverages a deep learning model trained on thousands of dermatological images
-                        to classify conditions like Melanoma, Atopic Dermatitis, and more — all in seconds.</p>
-                    <a href="{{ url_for('about') }}" class="link-btn">Learn More</a>
-                </div>
-                <div class="col-md-6 text-center">
-                    <img src="{{ url_for('static', filename='images/conifer-1127-removebg-preview.png') }}"
-                        class="w-100 float-anim" alt="About DermaAI" style="max-width:420px;">
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ── End About ── -->
-
-    <!-- ── Diseases Section ── -->
-    <section class="prevent" id="prevent">
-        <h1 class="heading"><span>Skin Conditions</span> We Detect</h1>
-        <div class="container">
-            <div class="d-flex flex-wrap justify-content-center">
-
-                <div class="box p-4 m-2 tilt-card">
-                    <img src="{{ url_for('static', filename='images/dry.png') }}" alt="Actinic Keratosis">
-                    <h3>Actinic Keratosis</h3>
-                    <p>Precancerous rough, scaly patches caused by prolonged sun exposure.</p>
-                </div>
-
-                <div class="box p-4 m-2 tilt-card">
-                    <img src="{{ url_for('static', filename='images/acne.png') }}" alt="Atopic Dermatitis">
-                    <h3>Atopic Dermatitis</h3>
-                    <p>Chronic, itchy condition causing redness, dryness, and inflammation.</p>
-                </div>
-
-                <div class="box p-4 m-2 tilt-card">
-                    <img src="{{ url_for('static', filename='images/Normal.png') }}" alt="Benign Keratosis">
-                    <h3>Benign Keratosis</h3>
-                    <p>Non-cancerous skin growth, often rough, brown, or wart-like.</p>
-                </div>
-
-                <div class="box p-4 m-2 tilt-card">
-                    <img src="{{ url_for('static', filename='images/oily.png') }}" alt="Dermatofibroma">
-                    <h3>Dermatofibroma</h3>
-                    <p>Firm, small, harmless skin nodule, usually on legs or arms.</p>
-                </div>
-
-                <div class="box p-4 m-2 tilt-card">
-                    <img src="{{ url_for('static', filename='images/Normal.png') }}" alt="Melanocytic Nevus">
-                    <h3>Melanocytic Nevus</h3>
-                    <p>Common moles; pigmented, benign growths from melanocytes.</p>
-                </div>
-
-                <div class="box p-4 m-2 tilt-card">
-                    <img src="{{ url_for('static', filename='images/Sensitive.png') }}" alt="Melanoma">
-                    <h3>Melanoma</h3>
-                    <p>Serious skin cancer from moles; may be dark, irregular, and fast-growing.</p>
-                </div>
-
-                <div class="box p-4 m-2 tilt-card">
-                    <img src="{{ url_for('static', filename='images/acne.png') }}" alt="Squamous Cell Carcinoma">
-                    <h3>Squamous Cell Carcinoma</h3>
-                    <p>Common skin cancer; scaly red patches or sores that may bleed.</p>
-                </div>
-            </div>
-            <div class="text-center mt-4">
-                <a href="{{ url_for('disease') }}" class="link-btn">View All Conditions</a>
-            </div>
-        </div>
-    </section>
-    <!-- ── End Diseases ── -->
-
-    <!-- ── Scan CTA Section ── -->
-    <section class="check" id="check">
-        <h1 class="heading"><span>Analyse</span> Your Skin</h1>
-        <div class="container text-center">
-            <p style="color:var(--text-muted);font-size:1.1rem;max-width:600px;margin:0 auto 2rem;">
-                Upload a close-up photo of the affected skin area or capture it with your camera.
-                Our AI model will instantly classify the condition for you.
-            </p>
-            <a href="{{ url_for('prediction') }}" class="link-btn" style="font-size:1.15rem;padding:14px 40px;">
-                <i class="fas fa-microscope me-2"></i> Start Scanning Now
-            </a>
-        </div>
-    </section>
-    <!-- ── End CTA ── -->
-
-
-
-    <!-- ── Contact Section ── -->
-    <section class="contact" id="contact">
-        <h1 class="heading"><span>Contact</span> Us</h1>
-        <div class="container">
-            <div class="row flex-wrap-reverse">
-                <div class="col-md-7 p-2">
-                    <form action="">
-                        <input type="text" placeholder="Your Name" class="box">
-                        <input type="email" placeholder="Your Email" class="box">
-                        <input type="tel" placeholder="Your Phone" class="box">
-                        <textarea placeholder="Your Message" cols="30" rows="8"></textarea>
-                        <input type="submit" class="link-btn" value="Send Message">
-                    </form>
-                </div>
-                <div class="col-md-5 p-2">
-                    <div class="p-4 box h-100" style="border-left:4px solid var(--primary-color);">
-                        <h4 style="font-weight:700;margin-bottom:1rem;">Get In Touch</h4>
-                        <p><i class="fas fa-envelope me-2" style="color:var(--primary-color);"></i>
-                            <a href="mailto:Zaira.khan0304@gmail.com">Zaira.khan0304@gmail.com</a>
-                        </p>
-                        <p><i class="fab fa-github me-2" style="color:var(--primary-color);"></i>
-                            <a href="https://github.com/zairakhaan786" target="_blank">github.com/zairakhaan786</a>
-                        </p>
-                        <p><i class="fas fa-map-marker-alt me-2" style="color:var(--primary-color);"></i>
-                            UPES, Dehradun, Uttarakhand, India
-                        </p>
-                        <hr style="border-color:var(--primary-color);opacity:.3;">
-                        <p style="color:var(--text-muted);font-size:0.9rem;margin:0;">
-                            DermaAI is developed as an <strong>individual AI research project</strong>
-                            at UPES, Dehradun. Feel free to reach out for collaboration or academic enquiries.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ── End Contact ── -->
-
-    <!-- ── Footer ── -->
-    <section class="footer">
-        <div class="container">
-            <div class="d-flex flex-wrap justify-content-center text-center text-sm-start">
-
-                <div class="box p-3 m-2" style="max-width:300px;">
-                    <h3>DermaAI</h3>
-                    <p>AI Skin Disease Detection System. This project was developed as an academic AI research project
-                        at the University of Petroleum and Energy Studies (UPES).</p>
-                </div>
-
-                <div class="box p-3 m-2">
-                    <h3>Quick Links</h3>
-                    <a href="{{ url_for('home') }}">Home</a>
-                    <a href="{{ url_for('prediction') }}">Upload Scan</a>
-                    <a href="{{ url_for('prediction') }}">Camera Scan</a>
-                    <a href="{{ url_for('about') }}">About Project</a>
-                </div>
-
-                <div class="box p-3 m-2">
-                    <h3>Location</h3>
-                    <p class="text-muted"><i class="fas fa-map-marker-alt me-2 text-primary"></i> UPES,
-                        Dehradun<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Uttarakhand, India</p>
-                </div>
-
-            </div>
-            <div class="credit">Developed at <span>UPES, Dehradun, India</span> | DermaAI &copy; 2026</div>
-        </div>
-    </section>
-    <!-- ── End Footer ── -->
-
-    <!-- Loading Overlay -->
-    <div id="loading-overlay">
-        <div class="spinner"></div>
-    </div>
+    </footer>
 
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS -->
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Simple Navbar Scroll Effect
+        window.addEventListener('scroll', function () {
+            var navbar = document.querySelector('.custom-navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white', 'shadow-sm');
+                navbar.classList.remove('bg-transparent', 'py-3');
+                navbar.classList.add('py-2');
+            } else {
+                navbar.classList.remove('bg-white', 'shadow-sm', 'py-2');
+                navbar.classList.add('bg-transparent', 'py-3');
+            }
+        });
+    </script>
 </body>
 
 </html>
