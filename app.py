@@ -60,7 +60,60 @@ else:
 
 app.config["MAX_CONTENT_LENGTH"] = MAX_CONTENT_LENGTH
 
-# ... (CLASS_NAMES and routes remain the same) ...
+# ── Disease Classes ────────────────────────────────────────────────────────────
+CLASS_NAMES: dict[int, str] = {
+    0: "Actinic Keratosis",
+    1: "Atopic Dermatitis",
+    2: "Benign Keratosis",
+    3: "Dermatofibroma",
+    4: "Melanocytic Nevus",
+    5: "Melanoma",
+    6: "Squamous Cell Carcinoma",
+    7: "Tinea Ringworm Candidiasis",
+    8: "Vascular Lesion",
+}
+
+
+# ── Helpers ────────────────────────────────────────────────────────────────────
+
+def allowed_file(filename: str) -> bool:
+    """Return True if *filename* has an allowed image extension."""
+    return (
+        "." in filename
+        and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
+    )
+
+
+# ── Page Routes ────────────────────────────────────────────────────────────────
+
+@app.route("/")
+def home():
+    """Render the main landing page."""
+    return render_template("index.html")
+
+
+@app.route("/about")
+def about():
+    """Render the About DermaAI page."""
+    return render_template("about.html")
+
+
+@app.route("/disease")
+def disease():
+    """Render the skin-disease reference page."""
+    return render_template("diseases.html")
+
+
+@app.route("/prediction")
+def prediction():
+    """Render the scan / prediction upload page."""
+    return render_template("prediction.html")
+
+
+@app.route("/contact")
+def contact():
+    """Render the contact page."""
+    return render_template("contact.html")
 
 @app.route("/predict", methods=["POST"])
 def predict():
