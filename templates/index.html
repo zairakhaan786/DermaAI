@@ -35,8 +35,10 @@
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-medium text-muted">
                     <li class="nav-item px-3"><a class="nav-link text-dark" href="#features">Features</a></li>
                     <li class="nav-item px-3"><a class="nav-link text-muted" href="#how-it-works">How It Works</a></li>
-                    <li class="nav-item px-3"><a class="nav-link text-muted" href="#conditions">Conditions</a></li>
-                    <li class="nav-item px-3"><a class="nav-link text-muted" href="#research">Research</a></li>
+                    <li class="nav-item px-3"><a class="nav-link text-muted"
+                            href="{{ url_for('research') }}">Research</a></li>
+                    <li class="nav-item px-3"><a class="nav-link text-muted"
+                            href="{{ url_for('prediction') }}#history">History</a></li>
                 </ul>
                 <div class="d-flex">
                     <a href="{{ url_for('prediction') }}"
@@ -76,23 +78,6 @@
                             class="btn btn-light rounded-pill py-3 px-5 fw-semibold shadow-sm text-dark bg-white border-0">
                             Scan with Camera
                         </a>
-                    </div>
-                    <div class="trusted-by d-flex align-items-center pt-2">
-                        <div class="avatar-group d-flex me-3">
-                            <div class="avatar rounded-circle bg-light border border-white"
-                                style="width:36px; height:36px; z-index:3; display:flex; align-items:center; justify-content:center; overflow:hidden;">
-                                <img src="https://i.pravatar.cc/100?img=1" width="100%">
-                            </div>
-                            <div class="avatar rounded-circle bg-light border border-white"
-                                style="width:36px; height:36px; margin-left:-12px; z-index:2; display:flex; align-items:center; justify-content:center; overflow:hidden;">
-                                <img src="https://i.pravatar.cc/100?img=2" width="100%">
-                            </div>
-                            <div class="avatar rounded-circle bg-light border border-white"
-                                style="width:36px; height:36px; margin-left:-12px; z-index:1; display:flex; align-items:center; justify-content:center; overflow:hidden;">
-                                <img src="https://i.pravatar.cc/100?img=3" width="100%">
-                            </div>
-                        </div>
-                        <span class="text-muted small fw-medium">Trusted by 50+ users worldwide</span>
                     </div>
                 </div>
 
@@ -287,80 +272,6 @@
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="py-5 mt-4" style="background: #fafafa;">
-        <div class="container py-5 text-center">
-            <h2 class="display-6 fw-bold text-dark mb-3">What Users Say</h2>
-            <p class="text-muted mx-auto mb-5">Empowering thousands of individuals to take control of their skin health.
-            </p>
-
-            <div class="row g-4 text-start">
-                <!-- Rev 1 -->
-                <div class="col-md-4">
-                    <div class="card border-0 shadow-sm p-4 rounded-4 h-100 transition-up">
-                        <div class="text-warning mb-3">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p class="text-muted fw-medium fst-italic mb-4 lh-lg" style="font-size: 0.95rem;">
-                            "DermaAI makes AI-powered skin analysis simple and accessible. The interface is clean, fast,
-                            and very easy to use."
-                        </p>
-                        <div class="d-flex align-items-center mt-auto">
-                            <div class="bg-light rounded-circle me-3" style="width: 45px; height: 45px;"><img
-                                    src="https://i.pravatar.cc/100?img=11" class="rounded-circle w-100"></div>
-                            <div>
-                                <h6 class="mb-0 fw-bold text-dark" style="font-size: 0.9rem;">Alex Rive</h6>
-                                <span class="text-muted small" style="font-size: 0.75rem;">Software Engineer</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Rev 2 -->
-                <div class="col-md-4">
-                    <div class="card border-0 shadow-sm p-4 rounded-4 h-100 transition-up">
-                        <div class="text-warning mb-3">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                        </div>
-                        <p class="text-muted fw-medium fst-italic mb-4 lh-lg" style="font-size: 0.95rem;">
-                            "As a professional, I find the severity mapping tool incredibly detailed. It provides
-                            insights that are usually only available in clinical settings."
-                        </p>
-                        <div class="d-flex align-items-center mt-auto">
-                            <div class="bg-light rounded-circle me-3" style="width: 45px; height: 45px;"><img
-                                    src="https://i.pravatar.cc/100?img=5" class="rounded-circle w-100"></div>
-                            <div>
-                                <h6 class="mb-0 fw-bold text-dark" style="font-size: 0.9rem;">Sarah Jenkins</h6>
-                                <span class="text-muted small" style="font-size: 0.75rem;">Dermatology Consultant</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Rev 3 -->
-                <div class="col-md-4">
-                    <div class="card border-0 shadow-sm p-4 rounded-4 h-100 transition-up">
-                        <div class="text-warning mb-3">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p class="text-muted fw-medium fst-italic mb-4 lh-lg" style="font-size: 0.95rem;">
-                            "Super fast and highly intuitive. I used it to check a recurring rash and the advice
-                            provided matched exactly what my GP eventually told me."
-                        </p>
-                        <div class="d-flex align-items-center mt-auto">
-                            <div class="bg-light rounded-circle me-3" style="width: 45px; height: 45px;"><img
-                                    src="https://i.pravatar.cc/100?img=8" class="rounded-circle w-100"></div>
-                            <div>
-                                <h6 class="mb-0 fw-bold text-dark" style="font-size: 0.9rem;">Mateo Brice</h6>
-                                <span class="text-muted small" style="font-size: 0.75rem;">Verified User</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- CTA Section -->
     <section class="py-5 mb-5">
@@ -454,9 +365,12 @@
 
             <div
                 class="border-top border-secondary border-opacity-25 pt-4 d-flex justify-content-between align-items-center flex-wrap">
-                <p class="text-secondary small mb-0">&copy; 2024 DermaAI. All rights reserved.</p>
-                <p class="text-secondary small mb-0">Developed at <span class="text-white fw-medium">UPES,
-                        Dehradun</span></p>
+                <div>
+                    <p class="text-secondary small mb-1">&copy; 2024 DermaAI. All rights reserved.</p>
+                    <p class="text-secondary small mb-0">Created and pushed to GitHub on <b>20 May 2023</b></p>
+                </div>
+                <p class="text-secondary small mb-0">Developed by <span class="text-white fw-medium">Zaira Khan</span>
+                    at <span class="text-white fw-medium">UPES, Dehradun</span></p>
             </div>
         </div>
     </footer>

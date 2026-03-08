@@ -81,10 +81,6 @@ h6 {
     z-index: 0;
 }
 
-.avatar {
-    border: 2px solid white;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
 
 /* 3D Orb Graphic Container */
 .main-card {
@@ -159,10 +155,6 @@ h6 {
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-/* Testimonials */
-.fa-star {
-    font-size: 0.9rem;
-}
 
 /* Footer Links */
 .hover-white {

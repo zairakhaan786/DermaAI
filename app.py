@@ -110,6 +110,12 @@ def prediction():
     return render_template("prediction.html")
 
 
+@app.route("/research")
+def research():
+    """Render the research and methodology page."""
+    return render_template("research.html")
+
+
 @app.route("/contact")
 def contact():
     """Render the contact page."""
